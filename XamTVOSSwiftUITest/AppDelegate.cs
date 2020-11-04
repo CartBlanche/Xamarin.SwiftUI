@@ -1,7 +1,7 @@
 ﻿using Foundation;
+//using SwiftUI;
+//using SwiftUITestShared;
 using UIKit;
-
-using SwiftUI;
 
 namespace XamTVOSSwiftUITest
 {
@@ -10,17 +10,23 @@ namespace XamTVOSSwiftUITest
     [Register("AppDelegate")]
     public class AppDelegate : UIApplicationDelegate
     {
-        public override UIWindow Window { get; set; }
+        // class-level declarations
+
+        public override UIWindow Window
+        {
+            get;
+            set;
+        }
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
-            Window = new UIWindow (UIScreen.MainScreen.Bounds);
+            /* Window = new UIWindow (UIScreen.MainScreen.Bounds);
 
             Window.RootViewController = new UIHostingViewController (new ClickButton ());
-
-            Window.MakeKeyAndVisible ();
+          
+            Window.MakeKeyAndVisible ();*/
 
             return true;
         }
@@ -56,26 +62,5 @@ namespace XamTVOSSwiftUITest
             // Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
         }
     }
-
-    public class ClickButton : View
-    {
-        State<int?> counter = new State<int?> (null);
-
-        public ModifiedBackground<Button<Text>, ModifiedBackground<Text, Color>> Body {
-            get {
-                Button<Text> button = null;
-                button = new Button<Text> (
-                    () => {
-                        var value = counter.Value ?? 0;
-                        counter.Value = value + 1;
-                    }, new Text (string.Format (counter.Value.HasValue ? "Clicked {0} times" : "Never been clicked", counter.Value))
-                );
-
-                var colour = counter.Value.HasValue ? counter.Value % 2 == 0 ? Color.Red : Color.Blue : Color.Yellow;
-                var colourText = counter.Value.HasValue ? counter.Value % 2 == 0 ? nameof (Color.Red) : nameof (Color.Blue) : nameof (Color.Yellow);
-
-                return button.Background (new Text (colourText).Background (colour));
-            }
-        }
-    }
 }
+

@@ -8,17 +8,21 @@
     <Folder Include="Subjects\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\native\$(Configuration)\xamarin.mac20\libSwiftUIGlue.dylib" Visible="false">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="..\..\native\Debug\xamarin.mac20\libSwiftUIGlue.dylib" />
     <Compile Include="Subjects\ViewWithOptionState.fs" />
     <Compile Include="TypeTests.fs" />
     <Compile Include="ColorTests.fs" />
     <Compile Include="Program.fs" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <None Include="..\..\native\$(Configuration)\xamarin.mac20\libSwiftUIGlue.dylib" Visible="false">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <ProjectReference Include="..\..\src\SwiftUI\SwiftUI.csproj" />
-    <PackageReference Include="FSharp.Core" Version="4.7.1" />
+    <PackageReference Include="FSharp.Core" Version="5.0.0" />
   </ItemGroup>
 </Project>
